@@ -41,10 +41,10 @@ export function FilterBar() {
     Boolean(searchParams.get("to"));
 
   return (
-    <div className="mb-5 rounded-2xl border border-border bg-white p-4">
+    <div className="mb-5 rounded-2xl border border-border bg-card p-4">
       <div className="flex flex-wrap items-end gap-3">
         <label className="min-w-56 flex-1 text-sm">
-          <span className="mb-1 block font-medium text-gray-700">Search</span>
+          <span className="mb-1 block font-medium text-foreground">Search</span>
           <input
             key={`${searchParams.get("status") ?? ""}|${searchParams.get("from") ?? ""}|${searchParams.get("to") ?? ""}`}
             defaultValue={urlQuery}
@@ -56,32 +56,32 @@ export function FilterBar() {
               }, 250);
             }}
             placeholder="Company, title, or location"
-            className="w-full rounded-lg border border-border bg-white px-3 py-2 text-sm outline-none ring-indigo-500 focus:ring-2"
+            className="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2"
           />
         </label>
         <label className="text-sm">
-          <span className="mb-1 block font-medium text-gray-700">From</span>
+          <span className="mb-1 block font-medium text-foreground">From</span>
           <input
             type="date"
             value={searchParams.get("from") ?? ""}
             onChange={(event) => update({ from: event.target.value || null })}
-            className="rounded-lg border border-border bg-white px-3 py-2 text-sm outline-none ring-indigo-500 focus:ring-2"
+            className="rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2"
           />
         </label>
         <label className="text-sm">
-          <span className="mb-1 block font-medium text-gray-700">To</span>
+          <span className="mb-1 block font-medium text-foreground">To</span>
           <input
             type="date"
             value={searchParams.get("to") ?? ""}
             onChange={(event) => update({ to: event.target.value || null })}
-            className="rounded-lg border border-border bg-white px-3 py-2 text-sm outline-none ring-indigo-500 focus:ring-2"
+            className="rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2"
           />
         </label>
         {hasFilters ? (
           <button
             type="button"
             onClick={() => router.push(pathname)}
-            className="rounded-lg border border-border px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+            className="rounded-lg border border-border px-3 py-2 text-sm text-foreground hover:bg-subtle"
           >
             Clear filters
           </button>
@@ -97,8 +97,8 @@ export function FilterBar() {
               onClick={() => toggleStatus(status.value)}
               className={`rounded-full px-3 py-1 text-xs font-medium ${
                 active
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-accent text-accent-fg"
+                  : "bg-subtle text-foreground hover:bg-border"
               }`}
             >
               {status.label}

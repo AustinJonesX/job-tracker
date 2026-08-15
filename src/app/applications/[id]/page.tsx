@@ -35,13 +35,13 @@ export default async function ApplicationDetailPage({
       <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-sm text-muted">
-            <Link href="/applications" className="hover:text-indigo-700">
+            <Link href="/applications" className="hover:text-accent">
               Applications
             </Link>
             <span className="px-1.5">/</span>
             {application.company}
           </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-gray-900">
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
             {application.title}
           </h1>
           <p className="mt-1 text-sm text-muted">{application.company}</p>
@@ -50,7 +50,7 @@ export default async function ApplicationDetailPage({
           <StatusSelect applicationId={application.id} value={application.status} />
           <Link
             href={`/applications/${application.id}/edit`}
-            className="rounded-lg border border-border bg-white px-3 py-2 text-sm font-medium hover:bg-gray-50"
+            className="rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium hover:bg-subtle"
           >
             Edit
           </Link>
@@ -62,7 +62,7 @@ export default async function ApplicationDetailPage({
       </div>
 
       <div className="grid gap-5">
-        <section className="rounded-2xl border border-border bg-white p-6">
+        <section className="rounded-2xl border border-border bg-card p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <StatusBadge status={application.status} />
             {application.url ? (
@@ -70,7 +70,7 @@ export default async function ApplicationDetailPage({
                 href={application.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm font-medium text-indigo-700 hover:underline"
+                className="text-sm font-medium text-accent hover:underline"
               >
                 Open job posting
               </a>
@@ -83,19 +83,19 @@ export default async function ApplicationDetailPage({
                   <dt className="text-xs font-medium uppercase tracking-wide text-muted">
                     {label}
                   </dt>
-                  <dd className="mt-1 text-sm text-gray-900">{value}</dd>
+                  <dd className="mt-1 text-sm text-foreground">{value}</dd>
                 </div>
               ))}
             </dl>
           ) : null}
         </section>
 
-        <section className="rounded-2xl border border-border bg-white p-6">
-          <h2 className="text-sm font-semibold text-gray-900">Resume</h2>
+        <section className="rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-sm font-semibold text-foreground">Resume</h2>
           {application.resume ? (
             <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-medium text-foreground">
                   {application.resume.label}
                 </p>
                 <p className="text-sm text-muted">
@@ -107,13 +107,13 @@ export default async function ApplicationDetailPage({
                   href={`/api/resumes/${application.resume.id}/file`}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium hover:bg-gray-50"
+                  className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium hover:bg-subtle"
                 >
                   Open
                 </a>
                 <a
                   href={`/api/resumes/${application.resume.id}/file?download=1`}
-                  className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium hover:bg-gray-50"
+                  className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium hover:bg-subtle"
                 >
                   Download
                 </a>
@@ -124,7 +124,7 @@ export default async function ApplicationDetailPage({
               No resume attached.{" "}
               <Link
                 href={`/applications/${application.id}/edit`}
-                className="font-medium text-indigo-700 hover:underline"
+                className="font-medium text-accent hover:underline"
               >
                 Add one
               </Link>
@@ -132,10 +132,10 @@ export default async function ApplicationDetailPage({
           )}
         </section>
 
-        <section className="rounded-2xl border border-border bg-white p-6">
-          <h2 className="text-sm font-semibold text-gray-900">Notes</h2>
+        <section className="rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-sm font-semibold text-foreground">Notes</h2>
           {application.notes ? (
-            <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-gray-800">
+            <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-foreground">
               {application.notes}
             </p>
           ) : (
@@ -143,8 +143,8 @@ export default async function ApplicationDetailPage({
           )}
         </section>
 
-        <section className="rounded-2xl border border-border bg-white p-6">
-          <h2 className="text-sm font-semibold text-gray-900">Status history</h2>
+        <section className="rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-sm font-semibold text-foreground">Status history</h2>
           <ol className="mt-4 space-y-3">
             {application.events.map((event) => (
               <li key={event.id} className="flex items-center justify-between gap-3">

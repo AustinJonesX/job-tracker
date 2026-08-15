@@ -57,9 +57,9 @@ export default async function ApplicationsPage({
           actionLabel={filtered ? undefined : "Add application"}
         />
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-border bg-white">
+        <div className="overflow-hidden rounded-2xl border border-border bg-card">
           <table className="w-full text-left text-sm">
-            <thead className="border-b border-border bg-gray-50 text-xs uppercase tracking-wide text-muted">
+            <thead className="border-b border-border bg-subtle text-xs uppercase tracking-wide text-muted">
               <tr>
                 <th className="px-4 py-3 font-medium">Company / role</th>
                 <th className="px-4 py-3 font-medium">Status</th>
@@ -74,9 +74,9 @@ export default async function ApplicationsPage({
                   <td className="px-4 py-3">
                     <Link
                       href={`/applications/${app.id}`}
-                      className="block hover:text-indigo-700"
+                      className="block hover:text-accent"
                     >
-                      <span className="font-medium text-gray-900">
+                      <span className="font-medium text-foreground">
                         {app.company}
                       </span>
                       <span className="mt-0.5 block text-muted">{app.title}</span>
@@ -93,9 +93,9 @@ export default async function ApplicationsPage({
                       <span
                         className={
                           app.followUpOn < today
-                            ? "font-medium text-red-700"
+                            ? "font-medium text-danger"
                             : app.followUpOn === today
-                              ? "font-medium text-amber-700"
+                              ? "font-medium text-warning"
                               : "text-muted"
                         }
                       >

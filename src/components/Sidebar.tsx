@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { STATUSES } from "@/lib/constants";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV = [
   { href: "/", label: "Dashboard", icon: "grid" },
@@ -51,10 +52,10 @@ export function Sidebar({
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-64 shrink-0 flex-col border-r border-border bg-white">
+    <aside className="flex w-64 shrink-0 flex-col border-r border-border bg-card">
       <div className="border-b border-border px-5 py-5">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-accent-fg">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
               <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
               <rect x="3" y="7" width="18" height="14" rx="2" />
@@ -62,13 +63,13 @@ export function Sidebar({
             </svg>
           </span>
           <span>
-            <span className="block text-sm font-semibold text-gray-900">Job Tracker</span>
+            <span className="block text-sm font-semibold text-foreground">Job Tracker</span>
             <span className="block text-xs text-muted">Local applications</span>
           </span>
         </Link>
         <Link
           href="/applications/new"
-          className="mt-4 flex w-full items-center justify-center rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="mt-4 flex w-full items-center justify-center rounded-lg bg-accent px-3 py-2 text-sm font-medium text-accent-fg hover:bg-accent-hover"
         >
           Add application
         </Link>
@@ -86,8 +87,8 @@ export function Sidebar({
               href={item.href}
               className={`mb-0.5 flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium ${
                 active
-                  ? "bg-indigo-50 text-indigo-700"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  ? "bg-accent-subtle text-accent"
+                  : "text-muted hover:bg-subtle hover:text-foreground"
               }`}
             >
               <Icon name={item.icon} />
@@ -110,11 +111,7 @@ export function Sidebar({
             <Link
               key={status.value}
               href={`/applications?status=${status.value}`}
-              className={`mb-0.5 flex items-center justify-between rounded-lg px-3 py-1.5 text-sm ${
-                pathname.startsWith("/applications")
-                  ? "text-gray-700 hover:bg-gray-50"
-                  : "text-gray-600 hover:bg-gray-50"
-              }`}
+              className="mb-0.5 flex items-center justify-between rounded-lg px-3 py-1.5 text-sm text-muted hover:bg-subtle hover:text-foreground"
             >
               <span>{status.label}</span>
               <span className="text-xs tabular-nums text-muted">{count}</span>
@@ -123,11 +120,12 @@ export function Sidebar({
         })}
       </div>
 
-      <div className="mt-auto border-t border-border px-5 py-4 text-xs text-muted">
+      <div className="mt-auto space-y-3 border-t border-border px-5 py-4 text-xs text-muted">
+        <ThemeToggle />
         {integrityOk ? (
           <p>SQLite data is stored locally in this project.</p>
         ) : (
-          <p className="text-red-700">
+          <p className="text-danger">
             Database integrity check failed. Writes are blocked.
             {integrityMessage ? ` ${integrityMessage}` : ""}
           </p>

@@ -12,7 +12,7 @@ import {
 import { todayIsoDate } from "@/lib/dates";
 
 const fieldClass =
-  "mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-sm outline-none ring-indigo-500 focus:ring-2";
+  "mt-1 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2";
 
 type ResumeMode = "none" | "existing" | "upload";
 
@@ -102,15 +102,15 @@ export function ApplicationForm({
   return (
     <form onSubmit={onSubmit} className="space-y-6">
       {error ? (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+        <div className="rounded-lg border border-danger bg-danger-subtle px-4 py-3 text-sm text-danger">
           {error}
         </div>
       ) : null}
 
-      <section className="rounded-2xl border border-border bg-white p-6">
-        <h2 className="text-sm font-semibold text-gray-900">Role</h2>
+      <section className="rounded-2xl border border-border bg-card p-6">
+        <h2 className="text-sm font-semibold text-foreground">Role</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Job title
             <input
               name="title"
@@ -120,7 +120,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Company
             <input
               name="company"
@@ -130,7 +130,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="sm:col-span-2 text-sm font-medium text-gray-700">
+          <label className="sm:col-span-2 text-sm font-medium text-foreground">
             Application link
             <input
               name="url"
@@ -140,7 +140,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Location
             <input
               name="location"
@@ -149,7 +149,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Work mode
             <select
               name="workMode"
@@ -164,7 +164,7 @@ export function ApplicationForm({
               ))}
             </select>
           </label>
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Source
             <select
               name="source"
@@ -179,7 +179,7 @@ export function ApplicationForm({
               ))}
             </select>
           </label>
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Salary / range
             <input
               name="salary"
@@ -191,10 +191,10 @@ export function ApplicationForm({
         </div>
       </section>
 
-      <section className="rounded-2xl border border-border bg-white p-6">
-        <h2 className="text-sm font-semibold text-gray-900">Tracking</h2>
+      <section className="rounded-2xl border border-border bg-card p-6">
+        <h2 className="text-sm font-semibold text-foreground">Tracking</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Status
             <select
               value={status}
@@ -208,7 +208,7 @@ export function ApplicationForm({
               ))}
             </select>
           </label>
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Applied date
             <input
               name="appliedAt"
@@ -218,7 +218,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-foreground">
             Follow up on
             <input
               name="followUpOn"
@@ -227,7 +227,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="sm:col-span-3 text-sm font-medium text-gray-700">
+          <label className="sm:col-span-3 text-sm font-medium text-foreground">
             Notes
             <textarea
               name="notes"
@@ -240,8 +240,8 @@ export function ApplicationForm({
         </div>
       </section>
 
-      <section className="rounded-2xl border border-border bg-white p-6">
-        <h2 className="text-sm font-semibold text-gray-900">Resume</h2>
+      <section className="rounded-2xl border border-border bg-card p-6">
+        <h2 className="text-sm font-semibold text-foreground">Resume</h2>
         <p className="mt-1 text-sm text-muted">
           Attach a tailored resume or reuse one you already uploaded. Identical
           files are stored once.
@@ -260,8 +260,8 @@ export function ApplicationForm({
               onClick={() => setResumeMode(value)}
               className={`rounded-full px-3 py-1.5 text-sm font-medium ${
                 resumeMode === value
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-accent text-accent-fg"
+                  : "bg-subtle text-foreground hover:bg-border"
               }`}
             >
               {label}
@@ -270,7 +270,7 @@ export function ApplicationForm({
         </div>
 
         {resumeMode === "existing" ? (
-          <label className="mt-4 block text-sm font-medium text-gray-700">
+          <label className="mt-4 block text-sm font-medium text-foreground">
             Resume on file
             <select
               name="resumeId"
@@ -297,7 +297,7 @@ export function ApplicationForm({
 
         {resumeMode === "upload" ? (
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-foreground">
               File
               <input
                 name="file"
@@ -307,7 +307,7 @@ export function ApplicationForm({
                 className={fieldClass}
               />
             </label>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-foreground">
               Label
               <input
                 name="resumeLabel"
@@ -323,7 +323,7 @@ export function ApplicationForm({
         <button
           type="submit"
           disabled={pending}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
+          className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-fg hover:bg-accent-hover disabled:opacity-60"
         >
           {pending
             ? "Saving..."
@@ -334,7 +334,7 @@ export function ApplicationForm({
         <button
           type="button"
           onClick={() => router.back()}
-          className="rounded-lg border border-border px-4 py-2 text-sm text-gray-700 hover:bg-white"
+          className="rounded-lg border border-border px-4 py-2 text-sm text-foreground hover:bg-subtle"
         >
           Cancel
         </button>

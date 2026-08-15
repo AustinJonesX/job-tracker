@@ -44,7 +44,7 @@ export default function DashboardPage() {
                 <Link
                   key={status.value}
                   href={`/applications?status=${status.value}`}
-                  className="rounded-2xl border border-border bg-white px-4 py-4 hover:border-indigo-200 hover:shadow-sm"
+                  className="rounded-2xl border border-border bg-card px-4 py-4 hover:border-accent hover:shadow-sm"
                 >
                   <p className="text-sm text-muted">{status.label}</p>
                   <p className="mt-1 text-2xl font-semibold tabular-nums">
@@ -56,9 +56,9 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <section className="rounded-2xl border border-border bg-white p-5">
+            <section className="rounded-2xl border border-border bg-card p-5">
               <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-gray-900">
+                <h2 className="text-sm font-semibold text-foreground">
                   Follow-ups
                 </h2>
                 <span className="text-xs text-muted">
@@ -78,10 +78,10 @@ export default function DashboardPage() {
                       <li key={item.id}>
                         <Link
                           href={`/applications/${item.id}`}
-                          className="flex items-start justify-between gap-3 rounded-lg p-2 hover:bg-gray-50"
+                          className="flex items-start justify-between gap-3 rounded-lg p-2 hover:bg-subtle"
                         >
                           <div>
-                            <p className="text-sm font-medium text-gray-900">
+                            <p className="text-sm font-medium text-foreground">
                               {item.company}
                             </p>
                             <p className="text-sm text-muted">{item.title}</p>
@@ -90,9 +90,9 @@ export default function DashboardPage() {
                             <p
                               className={`text-xs font-medium ${
                                 item.followUpOn! < today
-                                  ? "text-red-700"
+                                  ? "text-danger"
                                   : item.followUpOn === today
-                                    ? "text-amber-700"
+                                    ? "text-warning"
                                     : "text-muted"
                               }`}
                             >
@@ -110,14 +110,14 @@ export default function DashboardPage() {
               )}
             </section>
 
-            <section className="rounded-2xl border border-border bg-white p-5">
+            <section className="rounded-2xl border border-border bg-card p-5">
               <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-gray-900">
+                <h2 className="text-sm font-semibold text-foreground">
                   Recently updated
                 </h2>
                 <Link
                   href="/applications"
-                  className="text-xs font-medium text-indigo-700 hover:underline"
+                  className="text-xs font-medium text-accent hover:underline"
                 >
                   View all
                 </Link>
@@ -127,10 +127,10 @@ export default function DashboardPage() {
                   <li key={item.id}>
                     <Link
                       href={`/applications/${item.id}`}
-                      className="flex items-center justify-between gap-3 rounded-lg p-2 hover:bg-gray-50"
+                      className="flex items-center justify-between gap-3 rounded-lg p-2 hover:bg-subtle"
                     >
                       <div>
-                        <p className="text-sm font-medium text-gray-900">
+                        <p className="text-sm font-medium text-foreground">
                           {item.company}
                         </p>
                         <p className="text-sm text-muted">{item.title}</p>
