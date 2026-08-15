@@ -90,7 +90,7 @@ export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribe, readTheme, getServerSnapshot);
 
   return (
-    <div className="rounded-lg border border-border bg-subtle p-0.5">
+    <div className="shrink-0 rounded-lg border border-border bg-subtle p-0.5">
       <div className="grid grid-cols-3 gap-0.5" role="radiogroup" aria-label="Color theme">
         {OPTIONS.map((option) => {
           const selected = theme === option.value;

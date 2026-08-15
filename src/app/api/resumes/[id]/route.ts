@@ -5,6 +5,7 @@ import {
   handleApiError,
   jsonError,
   parseId,
+  requireShareSession,
 } from "@/lib/api-helpers";
 
 export const runtime = "nodejs";
@@ -14,6 +15,7 @@ type RouteContext = { params: Promise<{ id: string }> };
 
 export async function GET(_request: Request, context: RouteContext) {
   try {
+    requireShareSession(_request);
     const id = parseId((await context.params).id);
     const resume = getResume(id);
     if (!resume) return jsonError("Resume not found", 404);
@@ -25,6 +27,7 @@ export async function GET(_request: Request, context: RouteContext) {
 
 export async function PATCH(request: Request, context: RouteContext) {
   try {
+    requireShareSession(request);
     const id = parseId((await context.params).id);
     const form = await request.formData();
     const label = formText(form, "label");
@@ -38,6 +41,7 @@ export async function PATCH(request: Request, context: RouteContext) {
 
 export async function DELETE(_request: Request, context: RouteContext) {
   try {
+    requireShareSession(_request);
     const id = parseId((await context.params).id);
     deleteResume(id);
     return NextResponse.json({ ok: true });

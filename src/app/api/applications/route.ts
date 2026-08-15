@@ -10,6 +10,7 @@ import {
   formText,
   handleApiError,
   readResumeFromForm,
+  requireShareSession,
 } from "@/lib/api-helpers";
 
 export const runtime = "nodejs";
@@ -51,6 +52,7 @@ function inputFromForm(form: FormData): ApplicationInput {
 
 export async function GET(request: Request) {
   try {
+    requireShareSession(request);
     const url = new URL(request.url);
     const applications = listApplications({
       q: url.searchParams.get("q") ?? undefined,
@@ -66,6 +68,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    requireShareSession(request);
     const form = await request.formData();
     const input = inputFromForm(form);
     const upload = await readResumeFromForm(form);

@@ -17,7 +17,7 @@ export default async function EditApplicationPage({
   const resumes = listResumes();
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto min-w-0 max-w-3xl">
       <PageHeader
         title={`Edit ${application.company}`}
         description={application.title}

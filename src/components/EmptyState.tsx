@@ -12,7 +12,7 @@ export function EmptyState({
   actionLabel?: string;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card px-6 py-16 text-center">
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card px-4 py-12 text-center sm:px-6 sm:py-16">
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-subtle text-accent">
         <svg
           viewBox="0 0 24 24"

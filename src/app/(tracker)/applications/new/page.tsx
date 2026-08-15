@@ -8,7 +8,7 @@ export default function NewApplicationPage() {
   const resumes = listResumes();
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto min-w-0 max-w-3xl">
       <PageHeader
         title="Add application"
         description="Capture the posting, where you are in the process, and the resume you sent (or plan to send)."

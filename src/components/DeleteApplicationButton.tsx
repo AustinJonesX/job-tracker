@@ -38,7 +38,7 @@ export function DeleteApplicationButton({
       type="button"
       onClick={onDelete}
       disabled={pending}
-      className="rounded-lg border border-danger px-3 py-2 text-sm font-medium text-danger hover:bg-danger-subtle disabled:opacity-60"
+      className="w-full rounded-lg border border-danger px-3 py-2.5 text-sm font-medium text-danger hover:bg-danger-subtle disabled:opacity-60 lg:w-auto"
     >
       {pending ? "Removing..." : "Remove"}
     </button>

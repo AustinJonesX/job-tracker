@@ -41,9 +41,9 @@ export function FilterBar() {
     Boolean(searchParams.get("to"));
 
   return (
-    <div className="mb-5 rounded-2xl border border-border bg-card p-4">
-      <div className="flex flex-wrap items-end gap-3">
-        <label className="min-w-56 flex-1 text-sm">
+    <div className="mb-5 min-w-0 rounded-2xl border border-border bg-card p-3 md:p-4">
+      <div className="flex min-w-0 flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-end">
+        <label className="w-full min-w-0 flex-1 text-sm">
           <span className="mb-1 block font-medium text-foreground">Search</span>
           <input
             key={`${searchParams.get("status") ?? ""}|${searchParams.get("from") ?? ""}|${searchParams.get("to") ?? ""}`}
@@ -56,38 +56,40 @@ export function FilterBar() {
               }, 250);
             }}
             placeholder="Company, title, or location"
-            className="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2"
+            className="w-full min-w-0 rounded-lg border border-border bg-card px-3 py-2.5 text-sm outline-none ring-accent focus:ring-2"
           />
         </label>
-        <label className="text-sm">
-          <span className="mb-1 block font-medium text-foreground">From</span>
-          <input
-            type="date"
-            value={searchParams.get("from") ?? ""}
-            onChange={(event) => update({ from: event.target.value || null })}
-            className="rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2"
-          />
-        </label>
-        <label className="text-sm">
-          <span className="mb-1 block font-medium text-foreground">To</span>
-          <input
-            type="date"
-            value={searchParams.get("to") ?? ""}
-            onChange={(event) => update({ to: event.target.value || null })}
-            className="rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2"
-          />
-        </label>
+        <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 lg:flex">
+          <label className="min-w-0 text-sm">
+            <span className="mb-1 block font-medium text-foreground">From</span>
+            <input
+              type="date"
+              value={searchParams.get("from") ?? ""}
+              onChange={(event) => update({ from: event.target.value || null })}
+              className="w-full min-w-0 rounded-lg border border-border bg-card px-3 py-2.5 text-sm outline-none ring-accent focus:ring-2"
+            />
+          </label>
+          <label className="min-w-0 text-sm">
+            <span className="mb-1 block font-medium text-foreground">To</span>
+            <input
+              type="date"
+              value={searchParams.get("to") ?? ""}
+              onChange={(event) => update({ to: event.target.value || null })}
+              className="w-full min-w-0 rounded-lg border border-border bg-card px-3 py-2.5 text-sm outline-none ring-accent focus:ring-2"
+            />
+          </label>
+        </div>
         {hasFilters ? (
           <button
             type="button"
             onClick={() => router.push(pathname)}
-            className="rounded-lg border border-border px-3 py-2 text-sm text-foreground hover:bg-subtle"
+            className="w-full rounded-lg border border-border px-3 py-2.5 text-sm text-foreground hover:bg-subtle lg:w-auto"
           >
             Clear filters
           </button>
         ) : null}
       </div>
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-3 flex flex-wrap gap-1.5 sm:gap-2">
         {STATUSES.map((status) => {
           const active = selected.has(status.value);
           return (
@@ -95,7 +97,7 @@ export function FilterBar() {
               key={status.value}
               type="button"
               onClick={() => toggleStatus(status.value)}
-              className={`rounded-full px-3 py-1 text-xs font-medium ${
+              className={`rounded-full px-3 py-1.5 text-xs font-medium ${
                 active
                   ? "bg-accent text-accent-fg"
                   : "bg-subtle text-foreground hover:bg-border"

@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { getDashboardData, getStatusCounts } from "@/db/queries";
 import { getIntegrityStatus } from "@/db/client";
-import { handleApiError } from "@/lib/api-helpers";
+import { handleApiError, requireShareSession } from "@/lib/api-helpers";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    requireShareSession(request);
     return NextResponse.json({
       integrity: getIntegrityStatus(),
       counts: getStatusCounts(),

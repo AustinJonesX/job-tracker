@@ -37,16 +37,16 @@ export default function DashboardPage() {
         />
       ) : (
         <>
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2 min-[480px]:grid-cols-3 xl:grid-cols-3">
             {STATUSES.map((status) => {
               const count = data.counts[status.value] ?? 0;
               return (
                 <Link
                   key={status.value}
                   href={`/applications?status=${status.value}`}
-                  className="rounded-2xl border border-border bg-card px-4 py-4 hover:border-accent hover:shadow-sm"
+                  className="min-w-0 rounded-xl border border-border bg-card px-3 py-3 hover:border-accent sm:rounded-2xl sm:px-4 sm:py-4"
                 >
-                  <p className="text-sm text-muted">{status.label}</p>
+                  <p className="truncate text-sm text-muted">{status.label}</p>
                   <p className="mt-1 text-2xl font-semibold tabular-nums">
                     {count}
                   </p>
@@ -56,8 +56,8 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <section className="rounded-2xl border border-border bg-card p-5">
-              <div className="mb-4 flex items-center justify-between">
+            <section className="rounded-2xl border border-border bg-card p-4 sm:p-5">
+              <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
                 <h2 className="text-sm font-semibold text-foreground">
                   Follow-ups
                 </h2>
@@ -78,15 +78,15 @@ export default function DashboardPage() {
                       <li key={item.id}>
                         <Link
                           href={`/applications/${item.id}`}
-                          className="flex items-start justify-between gap-3 rounded-lg p-2 hover:bg-subtle"
+                          className="flex min-w-0 items-start justify-between gap-3 rounded-lg p-2 hover:bg-subtle"
                         >
-                          <div>
-                            <p className="text-sm font-medium text-foreground">
+                          <div className="min-w-0">
+                            <p className="truncate text-sm font-medium text-foreground">
                               {item.company}
                             </p>
-                            <p className="text-sm text-muted">{item.title}</p>
+                            <p className="truncate text-sm text-muted">{item.title}</p>
                           </div>
-                          <div className="text-right">
+                          <div className="shrink-0 text-right">
                             <p
                               className={`text-xs font-medium ${
                                 item.followUpOn! < today
@@ -110,8 +110,8 @@ export default function DashboardPage() {
               )}
             </section>
 
-            <section className="rounded-2xl border border-border bg-card p-5">
-              <div className="mb-4 flex items-center justify-between">
+            <section className="rounded-2xl border border-border bg-card p-4 sm:p-5">
+              <div className="mb-4 flex items-center justify-between gap-2">
                 <h2 className="text-sm font-semibold text-foreground">
                   Recently updated
                 </h2>
@@ -127,13 +127,13 @@ export default function DashboardPage() {
                   <li key={item.id}>
                     <Link
                       href={`/applications/${item.id}`}
-                      className="flex items-center justify-between gap-3 rounded-lg p-2 hover:bg-subtle"
+                      className="flex min-w-0 flex-col gap-2 rounded-lg p-2 hover:bg-subtle sm:flex-row sm:items-center sm:justify-between"
                     >
-                      <div>
-                        <p className="text-sm font-medium text-foreground">
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-medium text-foreground">
                           {item.company}
                         </p>
-                        <p className="text-sm text-muted">{item.title}</p>
+                        <p className="truncate text-sm text-muted">{item.title}</p>
                       </div>
                       <StatusBadge status={item.status} />
                     </Link>

@@ -12,7 +12,7 @@ import {
 import { todayIsoDate } from "@/lib/dates";
 
 const fieldClass =
-  "mt-1 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2";
+  "mt-1 w-full min-w-0 max-w-full rounded-lg border border-border bg-card px-3 py-2.5 text-sm outline-none ring-accent focus:ring-2";
 
 type ResumeMode = "none" | "existing" | "upload";
 
@@ -107,10 +107,10 @@ export function ApplicationForm({
         </div>
       ) : null}
 
-      <section className="rounded-2xl border border-border bg-card p-6">
+      <section className="rounded-2xl border border-border bg-card p-4 sm:p-6">
         <h2 className="text-sm font-semibold text-foreground">Role</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <label className="text-sm font-medium text-foreground">
+        <div className="mt-4 grid min-w-0 gap-4 sm:grid-cols-2">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Job title
             <input
               name="title"
@@ -120,7 +120,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Company
             <input
               name="company"
@@ -130,7 +130,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="sm:col-span-2 text-sm font-medium text-foreground">
+          <label className="min-w-0 sm:col-span-2 text-sm font-medium text-foreground">
             Application link
             <input
               name="url"
@@ -140,7 +140,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Location
             <input
               name="location"
@@ -149,7 +149,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Work mode
             <select
               name="workMode"
@@ -164,7 +164,7 @@ export function ApplicationForm({
               ))}
             </select>
           </label>
-          <label className="text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Source
             <select
               name="source"
@@ -179,7 +179,7 @@ export function ApplicationForm({
               ))}
             </select>
           </label>
-          <label className="text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Salary / range
             <input
               name="salary"
@@ -191,10 +191,10 @@ export function ApplicationForm({
         </div>
       </section>
 
-      <section className="rounded-2xl border border-border bg-card p-6">
+      <section className="rounded-2xl border border-border bg-card p-4 sm:p-6">
         <h2 className="text-sm font-semibold text-foreground">Tracking</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          <label className="text-sm font-medium text-foreground">
+        <div className="mt-4 grid min-w-0 gap-4 md:grid-cols-3">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Status
             <select
               value={status}
@@ -208,7 +208,7 @@ export function ApplicationForm({
               ))}
             </select>
           </label>
-          <label className="text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Applied date
             <input
               name="appliedAt"
@@ -218,7 +218,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground">
             Follow up on
             <input
               name="followUpOn"
@@ -227,7 +227,7 @@ export function ApplicationForm({
               className={fieldClass}
             />
           </label>
-          <label className="sm:col-span-3 text-sm font-medium text-foreground">
+          <label className="min-w-0 text-sm font-medium text-foreground md:col-span-3">
             Notes
             <textarea
               name="notes"
@@ -240,7 +240,7 @@ export function ApplicationForm({
         </div>
       </section>
 
-      <section className="rounded-2xl border border-border bg-card p-6">
+      <section className="rounded-2xl border border-border bg-card p-4 sm:p-6">
         <h2 className="text-sm font-semibold text-foreground">Resume</h2>
         <p className="mt-1 text-sm text-muted">
           Attach a tailored resume or reuse one you already uploaded. Identical
@@ -296,8 +296,8 @@ export function ApplicationForm({
         ) : null}
 
         {resumeMode === "upload" ? (
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <label className="text-sm font-medium text-foreground">
+          <div className="mt-4 grid min-w-0 gap-4 sm:grid-cols-2">
+            <label className="min-w-0 text-sm font-medium text-foreground">
               File
               <input
                 name="file"
@@ -307,7 +307,7 @@ export function ApplicationForm({
                 className={fieldClass}
               />
             </label>
-            <label className="text-sm font-medium text-foreground">
+            <label className="min-w-0 text-sm font-medium text-foreground">
               Label
               <input
                 name="resumeLabel"
@@ -319,11 +319,11 @@ export function ApplicationForm({
         ) : null}
       </section>
 
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:gap-3">
         <button
           type="submit"
           disabled={pending}
-          className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-fg hover:bg-accent-hover disabled:opacity-60"
+          className="w-full rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-fg hover:bg-accent-hover disabled:opacity-60 sm:w-auto"
         >
           {pending
             ? "Saving..."
@@ -334,7 +334,7 @@ export function ApplicationForm({
         <button
           type="button"
           onClick={() => router.back()}
-          className="rounded-lg border border-border px-4 py-2 text-sm text-foreground hover:bg-subtle"
+          className="w-full rounded-lg border border-border px-4 py-2.5 text-sm text-foreground hover:bg-subtle sm:w-auto"
         >
           Cancel
         </button>

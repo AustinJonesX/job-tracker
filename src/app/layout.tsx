@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AppShell } from "@/components/AppShell";
 import { themeBootScript } from "@/lib/theme";
 import "./globals.css";
 
@@ -19,6 +18,12 @@ export const metadata: Metadata = {
   description: "Local-first job application tracker",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -32,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
       </head>
       <body className="min-h-full bg-background text-foreground">
-        <AppShell>{children}</AppShell>
+        {children}
       </body>
     </html>
   );

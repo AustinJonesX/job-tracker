@@ -26,7 +26,7 @@ export function StatusSelect({
     <select
       value={value}
       onChange={(event) => onChange(event.target.value as Status)}
-      className="rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none ring-accent focus:ring-2"
+      className="w-full min-w-0 rounded-lg border border-border bg-card px-3 py-2.5 text-sm outline-none ring-accent focus:ring-2 lg:w-auto"
     >
       {STATUSES.map((status) => (
         <option key={status.value} value={status.value}>

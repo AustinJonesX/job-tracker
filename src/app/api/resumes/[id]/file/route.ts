@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { NextResponse } from "next/server";
 import { resumeFilePath } from "@/db/client";
 import { getResume } from "@/db/queries";
-import { handleApiError, jsonError, parseId } from "@/lib/api-helpers";
+import { handleApiError, jsonError, parseId, requireShareSession } from "@/lib/api-helpers";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -20,6 +20,7 @@ const CONTENT_TYPES: Record<string, string> = {
 
 export async function GET(request: Request, context: RouteContext) {
   try {
+    requireShareSession(request);
     const id = parseId((await context.params).id);
     const resume = getResume(id);
     if (!resume) return jsonError("Resume not found", 404);
