@@ -23,14 +23,6 @@ A local-first job application tracker. Keep postings, status, and tailored resum
 
 Run it on your laptop and open it in the browser. Nothing is sent to a hosted service.
 
-## Screenshots
-
-![Dashboard](docs/screenshots/dashboard.png)
-
-![Applications](docs/screenshots/applications.png)
-
-![Application detail](docs/screenshots/detail.png)
-
 ## Requirements
 
 - Node.js 18+ (20 or 24 is fine)
