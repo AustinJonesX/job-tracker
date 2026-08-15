@@ -35,8 +35,6 @@ This is intentionally a **local app**. Run it on your laptop and open it in the 
 
 ## Screenshots
 
-Add captures after your first run (see [docs/screenshots/README.md](docs/screenshots/README.md)):
-
 ![Dashboard](docs/screenshots/dashboard.png)
 
 ![Applications](docs/screenshots/applications.png)
