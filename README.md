@@ -55,7 +55,7 @@ No Docker, no database install. SQLite is a file.
 ### 1. Get the project
 
 ```bash
-git clone <your-repo-url> job-tracker
+git clone https://github.com/AustinJonesX/job-tracker.git job-tracker
 cd job-tracker
 ```
 
